@@ -1,7 +1,6 @@
  school-scheduling
 
-Note: It may have some errors in Orar.Orar 
-To resolve the problem just replace this line: " Orar.App app = new Orar.App(); " with " App app = new App(); "
+
 
     About the project
    The project was about developing a software for school scheduling.
@@ -13,3 +12,7 @@ To resolve the problem just replace this line: " Orar.App app = new Orar.App(); 
  Clicking on Orar ( means scheduler ), you will discover a table. To add courses in the table, you must select first from dropdowns the year, group, subgroup and the week ( this scheduler aplies only for the Romanian universities ). After selecting everything, you can double click on a cell and it will open a new window to setup the course ( the teacher, which kind of module it is: 2 hours, 3 hours or more, the hall available and so on). All these data are generated automated from the database.
  
  How I said, the administrator can add through the second button Administrator, different kinds of data. He can update some list of teachers, subjects, halls and to divide years by groups and subgroups.
+
+    Note: It may have some errors in Orar.Orar 
+    To resolve the problem just replace this line: " Orar.App app = new Orar.App(); " with " App app = new App(); ".
+    Also, the project still have some bugs.
