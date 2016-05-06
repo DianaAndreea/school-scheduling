@@ -1,7 +1,7 @@
 # school-scheduling
 
-#Note: It may have some errors in Orar.Orar 
-#To resolve the problem just replace this line: " Orar.App app = new Orar.App(); " with " App app = new App(); "
+Note: It may have some errors in Orar.Orar 
+To resolve the problem just replace this line: " Orar.App app = new Orar.App(); " with " App app = new App(); "
 
 #About the project
 #The project was about developing a software for school scheduling.
