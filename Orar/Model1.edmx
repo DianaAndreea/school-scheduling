@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrarDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="An">
+          <Key>
+            <PropertyRef Name="cod_an" />
+          </Key>
+          <Property Name="cod_an" Type="int" Nullable="false" />
+          <Property Name="an" Type="int" />
+          <Property Name="cod_gr" Type="int" />
+        </EntityType>
+        <EntityType Name="Disciplina">
+          <Key>
+            <PropertyRef Name="cod_d" />
+          </Key>
+          <Property Name="cod_d" Type="int" Nullable="false" />
+          <Property Name="denumire" Type="nchar" MaxLength="20" />
+          <Property Name="nr_ore_c" Type="int" />
+          <Property Name="nr_ore_s" Type="int" />
+          <Property Name="nr_ore_l" Type="int" />
+          <Property Name="nr_ore_p" Type="int" />
+          <Property Name="an" Type="int" />
+          <Property Name="sem" Type="int" />
+        </EntityType>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="cod_gr" />
+          </Key>
+          <Property Name="cod_gr" Type="int" Nullable="false" />
+          <Property Name="grupa" Type="nchar" MaxLength="10" />
+          <Property Name="cod_sg" Type="int" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="cod_m" />
+          </Key>
+          <Property Name="cod_m" Type="int" Nullable="false" />
+          <Property Name="ora" Type="date" />
+          <Property Name="cod_d" Type="int" />
+        </EntityType>
+        <EntityType Name="Orar">
+          <Key>
+            <PropertyRef Name="cod_o" />
+          </Key>
+          <Property Name="cod_o" Type="int" Nullable="false" />
+          <Property Name="sapt" Type="nchar" MaxLength="10" />
+          <Property Name="zi" Type="nchar" MaxLength="10" />
+          <Property Name="cod_m" Type="int" />
+          <Property Name="cod_p" Type="int" />
+          <Property Name="cod_s" Type="int" />
+          <Property Name="cod_tip" Type="int" />
+          <Property Name="form_studiu" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="cod_p" />
+          </Key>
+          <Property Name="cod_p" Type="int" Nullable="false" />
+          <Property Name="nume" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="prenume" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="cod_s" />
+          </Key>
+          <Property Name="cod_s" Type="int" Nullable="false" />
+          <Property Name="nume" Type="nchar" MaxLength="20" />
+          <Property Name="capacitate" Type="int" />
+          <Property Name="tip" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Subgrupa">
+          <Key>
+            <PropertyRef Name="cod_sg" />
+          </Key>
+          <Property Name="cod_sg" Type="int" Nullable="false" />
+          <Property Name="subgrupa" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="cod_tip" />
+          </Key>
+          <Property Name="cod_tip" Type="int" Nullable="false" />
+          <Property Name="an" Type="int" />
+          <Property Name="gr" Type="int" />
+          <Property Name="sgr" Type="int" />
+        </EntityType>
+        <Association Name="FK1">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="Modul" Type="Self.Modul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="cod_d" />
+            </Principal>
+            <Dependent Role="Modul">
+              <PropertyRef Name="cod_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK10">
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
+          <End Role="An" Type="Self.An" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="cod_gr" />
+            </Principal>
+            <Dependent Role="An">
+              <PropertyRef Name="cod_gr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK11">
+          <End Role="Subgrupa" Type="Self.Subgrupa" Multiplicity="0..1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subgrupa">
+              <PropertyRef Name="cod_sg" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="cod_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK15">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="cod_tip" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK6">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="cod_m" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_m" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="cod_p" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK8">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="cod_s" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_s" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrarDatabaseModelStoreContainer">
+          <EntitySet Name="An" EntityType="Self.An" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupa" EntityType="Self.Grupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modul" EntityType="Self.Modul" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orar" EntityType="Self.Orar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subgrupa" EntityType="Self.Subgrupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Modul" EntitySet="Modul" />
+          </AssociationSet>
+          <AssociationSet Name="FK10" Association="Self.FK10">
+            <End Role="Grupa" EntitySet="Grupa" />
+            <End Role="An" EntitySet="An" />
+          </AssociationSet>
+          <AssociationSet Name="FK11" Association="Self.FK11">
+            <End Role="Subgrupa" EntitySet="Subgrupa" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK15" Association="Self.FK15">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Orar" EntitySet="Orar" />
+          </AssociationSet>
+          <AssociationSet Name="FK6" Association="Self.FK6">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="Orar" EntitySet="Orar" />
+          </AssociationSet>
+          <AssociationSet Name="FK7" Association="Self.FK7">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Orar" EntitySet="Orar" />
+          </AssociationSet>
+          <AssociationSet Name="FK8" Association="Self.FK8">
+            <End Role="Sala" EntitySet="Sala" />
+            <End Role="Orar" EntitySet="Orar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrarDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="An">
+          <Key>
+            <PropertyRef Name="cod_an" />
+          </Key>
+          <Property Name="cod_an" Type="Int32" Nullable="false" />
+          <Property Name="an1" Type="Int32" />
+          <Property Name="cod_gr" Type="Int32" />
+          <NavigationProperty Name="Grupa" Relationship="Self.FK10" FromRole="An" ToRole="Grupa" />
+        </EntityType>
+        <EntityType Name="Disciplina">
+          <Key>
+            <PropertyRef Name="cod_d" />
+          </Key>
+          <Property Name="cod_d" Type="Int32" Nullable="false" />
+          <Property Name="denumire" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nr_ore_c" Type="Int32" />
+          <Property Name="nr_ore_s" Type="Int32" />
+          <Property Name="nr_ore_l" Type="Int32" />
+          <Property Name="nr_ore_p" Type="Int32" />
+          <Property Name="an" Type="Int32" />
+          <Property Name="sem" Type="Int32" />
+          <NavigationProperty Name="Moduls" Relationship="Self.FK1" FromRole="Disciplina" ToRole="Modul" />
+        </EntityType>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="cod_gr" />
+          </Key>
+          <Property Name="cod_gr" Type="Int32" Nullable="false" />
+          <Property Name="grupa1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cod_sg" Type="Int32" />
+          <NavigationProperty Name="Ans" Relationship="Self.FK10" FromRole="Grupa" ToRole="An" />
+          <NavigationProperty Name="Subgrupa" Relationship="Self.FK11" FromRole="Grupa" ToRole="Subgrupa" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="cod_m" />
+          </Key>
+          <Property Name="cod_m" Type="Int32" Nullable="false" />
+          <Property Name="ora" Type="DateTime" Precision="0" />
+          <Property Name="cod_d" Type="Int32" />
+          <NavigationProperty Name="Disciplina" Relationship="Self.FK1" FromRole="Modul" ToRole="Disciplina" />
+          <NavigationProperty Name="Orars" Relationship="Self.FK6" FromRole="Modul" ToRole="Orar" />
+        </EntityType>
+        <EntityType Name="Orar">
+          <Key>
+            <PropertyRef Name="cod_o" />
+          </Key>
+          <Property Name="cod_o" Type="Int32" Nullable="false" />
+          <Property Name="sapt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="zi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cod_m" Type="Int32" />
+          <Property Name="cod_p" Type="Int32" />
+          <Property Name="cod_s" Type="Int32" />
+          <Property Name="cod_tip" Type="Int32" />
+          <Property Name="form_studiu" Type="Int32" />
+          <NavigationProperty Name="Modul" Relationship="Self.FK6" FromRole="Orar" ToRole="Modul" />
+          <NavigationProperty Name="Tip" Relationship="Self.FK15" FromRole="Orar" ToRole="Tip" />
+          <NavigationProperty Name="Profesor" Relationship="Self.FK7" FromRole="Orar" ToRole="Profesor" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK8" FromRole="Orar" ToRole="Sala" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="cod_p" />
+          </Key>
+          <Property Name="cod_p" Type="Int32" Nullable="false" />
+          <Property Name="nume" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="prenume" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orars" Relationship="Self.FK7" FromRole="Profesor" ToRole="Orar" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="cod_s" />
+          </Key>
+          <Property Name="cod_s" Type="Int32" Nullable="false" />
+          <Property Name="nume" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="capacitate" Type="Int32" />
+          <Property Name="tip" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Orars" Relationship="Self.FK8" FromRole="Sala" ToRole="Orar" />
+        </EntityType>
+        <EntityType Name="Subgrupa">
+          <Key>
+            <PropertyRef Name="cod_sg" />
+          </Key>
+          <Property Name="cod_sg" Type="Int32" Nullable="false" />
+          <Property Name="subgrupa1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Grupas" Relationship="Self.FK11" FromRole="Subgrupa" ToRole="Grupa" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="cod_tip" />
+          </Key>
+          <Property Name="cod_tip" Type="Int32" Nullable="false" />
+          <Property Name="an" Type="Int32" />
+          <Property Name="gr" Type="Int32" />
+          <Property Name="sgr" Type="Int32" />
+          <NavigationProperty Name="Orars" Relationship="Self.FK15" FromRole="Tip" ToRole="Orar" />
+        </EntityType>
+        <Association Name="FK10">
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
+          <End Role="An" Type="Self.An" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="cod_gr" />
+            </Principal>
+            <Dependent Role="An">
+              <PropertyRef Name="cod_gr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="Modul" Type="Self.Modul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="cod_d" />
+            </Principal>
+            <Dependent Role="Modul">
+              <PropertyRef Name="cod_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK11">
+          <End Role="Subgrupa" Type="Self.Subgrupa" Multiplicity="0..1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subgrupa">
+              <PropertyRef Name="cod_sg" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="cod_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK6">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="cod_m" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_m" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK15">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="cod_tip" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK7">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="cod_p" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK8">
+          <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+          <End Role="Orar" Type="Self.Orar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sala">
+              <PropertyRef Name="cod_s" />
+            </Principal>
+            <Dependent Role="Orar">
+              <PropertyRef Name="cod_s" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrarDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ans" EntityType="Self.An" />
+          <EntitySet Name="Disciplinas" EntityType="Self.Disciplina" />
+          <EntitySet Name="Grupas" EntityType="Self.Grupa" />
+          <EntitySet Name="Moduls" EntityType="Self.Modul" />
+          <EntitySet Name="Orars" EntityType="Self.Orar" />
+          <EntitySet Name="Profesors" EntityType="Self.Profesor" />
+          <EntitySet Name="Salas" EntityType="Self.Sala" />
+          <EntitySet Name="Subgrupas" EntityType="Self.Subgrupa" />
+          <EntitySet Name="Tips" EntityType="Self.Tip" />
+          <AssociationSet Name="FK10" Association="Self.FK10">
+            <End Role="Grupa" EntitySet="Grupas" />
+            <End Role="An" EntitySet="Ans" />
+          </AssociationSet>
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="Disciplina" EntitySet="Disciplinas" />
+            <End Role="Modul" EntitySet="Moduls" />
+          </AssociationSet>
+          <AssociationSet Name="FK11" Association="Self.FK11">
+            <End Role="Subgrupa" EntitySet="Subgrupas" />
+            <End Role="Grupa" EntitySet="Grupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK6" Association="Self.FK6">
+            <End Role="Modul" EntitySet="Moduls" />
+            <End Role="Orar" EntitySet="Orars" />
+          </AssociationSet>
+          <AssociationSet Name="FK15" Association="Self.FK15">
+            <End Role="Tip" EntitySet="Tips" />
+            <End Role="Orar" EntitySet="Orars" />
+          </AssociationSet>
+          <AssociationSet Name="FK7" Association="Self.FK7">
+            <End Role="Profesor" EntitySet="Profesors" />
+            <End Role="Orar" EntitySet="Orars" />
+          </AssociationSet>
+          <AssociationSet Name="FK8" Association="Self.FK8">
+            <End Role="Sala" EntitySet="Salas" />
+            <End Role="Orar" EntitySet="Orars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrarDatabaseModelStoreContainer" CdmEntityContainer="OrarDatabaseEntities1">
+          <EntitySetMapping Name="Ans">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.An">
+              <MappingFragment StoreEntitySet="An">
+                <ScalarProperty Name="cod_an" ColumnName="cod_an" />
+                <ScalarProperty Name="an1" ColumnName="an" />
+                <ScalarProperty Name="cod_gr" ColumnName="cod_gr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disciplinas">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Disciplina">
+              <MappingFragment StoreEntitySet="Disciplina">
+                <ScalarProperty Name="cod_d" ColumnName="cod_d" />
+                <ScalarProperty Name="denumire" ColumnName="denumire" />
+                <ScalarProperty Name="nr_ore_c" ColumnName="nr_ore_c" />
+                <ScalarProperty Name="nr_ore_s" ColumnName="nr_ore_s" />
+                <ScalarProperty Name="nr_ore_l" ColumnName="nr_ore_l" />
+                <ScalarProperty Name="nr_ore_p" ColumnName="nr_ore_p" />
+                <ScalarProperty Name="an" ColumnName="an" />
+                <ScalarProperty Name="sem" ColumnName="sem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupas">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Grupa">
+              <MappingFragment StoreEntitySet="Grupa">
+                <ScalarProperty Name="cod_gr" ColumnName="cod_gr" />
+                <ScalarProperty Name="grupa1" ColumnName="grupa" />
+                <ScalarProperty Name="cod_sg" ColumnName="cod_sg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moduls">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Modul">
+              <MappingFragment StoreEntitySet="Modul">
+                <ScalarProperty Name="cod_m" ColumnName="cod_m" />
+                <ScalarProperty Name="ora" ColumnName="ora" />
+                <ScalarProperty Name="cod_d" ColumnName="cod_d" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orars">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Orar">
+              <MappingFragment StoreEntitySet="Orar">
+                <ScalarProperty Name="cod_o" ColumnName="cod_o" />
+                <ScalarProperty Name="sapt" ColumnName="sapt" />
+                <ScalarProperty Name="zi" ColumnName="zi" />
+                <ScalarProperty Name="cod_m" ColumnName="cod_m" />
+                <ScalarProperty Name="cod_p" ColumnName="cod_p" />
+                <ScalarProperty Name="cod_s" ColumnName="cod_s" />
+                <ScalarProperty Name="cod_tip" ColumnName="cod_tip" />
+                <ScalarProperty Name="form_studiu" ColumnName="form_studiu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesors">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Profesor">
+              <MappingFragment StoreEntitySet="Profesor">
+                <ScalarProperty Name="cod_p" ColumnName="cod_p" />
+                <ScalarProperty Name="nume" ColumnName="nume" />
+                <ScalarProperty Name="prenume" ColumnName="prenume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salas">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Sala">
+              <MappingFragment StoreEntitySet="Sala">
+                <ScalarProperty Name="cod_s" ColumnName="cod_s" />
+                <ScalarProperty Name="nume" ColumnName="nume" />
+                <ScalarProperty Name="capacitate" ColumnName="capacitate" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subgrupas">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Subgrupa">
+              <MappingFragment StoreEntitySet="Subgrupa">
+                <ScalarProperty Name="cod_sg" ColumnName="cod_sg" />
+                <ScalarProperty Name="subgrupa1" ColumnName="subgrupa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tips">
+            <EntityTypeMapping TypeName="OrarDatabaseModel.Tip">
+              <MappingFragment StoreEntitySet="Tip">
+                <ScalarProperty Name="cod_tip" ColumnName="cod_tip" />
+                <ScalarProperty Name="an" ColumnName="an" />
+                <ScalarProperty Name="gr" ColumnName="gr" />
+                <ScalarProperty Name="sgr" ColumnName="sgr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

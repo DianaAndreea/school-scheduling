@@ -1,0 +1,99 @@
+﻿<Window x:Class="Orar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Administrare Orar" Height="500" Width="725">
+    <Window.Resources>
+<!--Modul-->
+        <DataGridTextColumn x:Key="ModulColumn" Header=""
+                            Binding="{Binding Modul}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+<!--Monday-->
+        <DataGridTextColumn x:Key="MondayColumn" Header="Luni"
+                            Binding="{Binding Monday}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+<!--Tuesday-->
+        <DataGridTextColumn x:Key="TuesdayColumn" Header="Marti"
+                            Binding="{Binding Tuesday}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+<!--Wednesday-->
+        <DataGridTextColumn x:Key="WednesdayColumn" Header="Miercuri"
+                            Binding="{Binding Wednesday}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+<!--Thursday-->    
+        <DataGridTextColumn x:Key="ThursdayColumn" Header="Joi"
+                            Binding="{Binding Thursday}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+<!--Friday-->
+        <DataGridTextColumn x:Key="FridayColumn" Header="Vineri"
+                            Binding="{Binding Friday}"
+                            MinWidth="100" Width="Auto">
+            <DataGridTextColumn.HeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGridTextColumn.HeaderStyle>
+        </DataGridTextColumn>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Height="380" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <DataGrid Name="OrarGrid" HorizontalAlignment="Center" AutoGenerateColumns="False" 
+                      CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" 
+                      IsReadOnly="True" ScrollViewer.CanContentScroll="False">
+                <DataGrid.Columns>                 
+                    <StaticResource ResourceKey="ModulColumn"/>
+                    <StaticResource ResourceKey="MondayColumn"/>
+                    <StaticResource ResourceKey="TuesdayColumn"/>
+                    <StaticResource ResourceKey="WednesdayColumn"/>
+                    <StaticResource ResourceKey="ThursdayColumn"/>
+                    <StaticResource ResourceKey="FridayColumn"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

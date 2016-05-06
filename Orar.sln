@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orar", "Orar\Orar.csproj", "{B1099E87-50EE-4C7E-8AC2-51F109C7AE00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orar.Tests", "Orar.Tests\Orar.Tests.csproj", "{F93E27B5-F078-4786-A3A3-51CC54B71565}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1099E87-50EE-4C7E-8AC2-51F109C7AE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1099E87-50EE-4C7E-8AC2-51F109C7AE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1099E87-50EE-4C7E-8AC2-51F109C7AE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1099E87-50EE-4C7E-8AC2-51F109C7AE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93E27B5-F078-4786-A3A3-51CC54B71565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93E27B5-F078-4786-A3A3-51CC54B71565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93E27B5-F078-4786-A3A3-51CC54B71565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93E27B5-F078-4786-A3A3-51CC54B71565}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

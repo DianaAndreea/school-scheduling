@@ -1,0 +1,131 @@
+﻿<Window x:Class="Orar.OrarUpdate"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="OrarUpdate" Height="350" Width="450" WindowStartupLocation="CenterScreen" Icon="pics\Planner-24.png" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+<Window.Background>
+<ImageBrush ImageSource="pics\back.png" />
+</Window.Background>
+    
+<Grid Unloaded="Grid_Unloaded_1">
+<Grid.ColumnDefinitions>
+    <ColumnDefinition Width="10*"/>
+    <ColumnDefinition Width="100*"/>
+    <ColumnDefinition Width="100*"/>
+    <ColumnDefinition Width="10*"/>
+</Grid.ColumnDefinitions>
+        
+<Grid.RowDefinitions>
+    <RowDefinition Height="10*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="50*"/>
+    <RowDefinition Height="30*"/>
+</Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
+           <Label Content="Alege:" FontFamily="Hobo std" FontSize="13" Height="auto"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="An" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBox x:Name="AnText" Width="100" HorizontalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+             <Label Content="Ora" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBox x:Name="OraText" Width="100" HorizontalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+    
+        <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Disciplina" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <ComboBox x:Name="DiscipinaCombo" Width="100">
+               
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Grupa" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBox x:Name="GrupaText" Width="100" HorizontalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Profesor" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <ComboBox x:Name="ProfesorCombo" Width="100">
+            </ComboBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Modul" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="6" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Orientation="Vertical">
+            <ComboBox x:Name="ModulCombo" Width="100">
+                <ComboBoxItem>1 h</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">2 h</ComboBoxItem>
+                <ComboBoxItem>3 h</ComboBoxItem>
+                <ComboBoxItem>4 h</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Tip" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <ComboBox x:Name="TipCombo" Width="100"  DropDownClosed="click" >
+                <ComboBoxItem>Curs</ComboBoxItem>
+                <ComboBoxItem>Seminar</ComboBoxItem>
+                <ComboBoxItem>Laborator</ComboBoxItem>
+                <ComboBoxItem>Proiect</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Subgrupa" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBox x:Name="SubgrupaText" Width="100" HorizontalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Vertical">
+            <Label Content="Sala" FontFamily="Hobo std" FontSize="13" Height="auto" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical">
+            <ComboBox x:Name="SalaCombo" Width="100" >
+              
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Button Content="Adauga" Width="120" Height="40"
+                    Opacity="0.7" FontFamily="Hobo Std" FontSize="14" Click="adauga">
+                <Button.Background>
+                    <SolidColorBrush Color="#FFEDE7F6" Opacity="0.3"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Width="35" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Vertical"
+                    Grid.Column="2" Grid.Row="7">
+            <Button Width="50" Height="30" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Click="backm_click">
+                <StackPanel Width="35" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" >
+                    <Image Source="pics\Undo-32.png" HorizontalAlignment="Left" Width="35"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
